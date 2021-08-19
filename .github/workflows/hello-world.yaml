@@ -58,13 +58,13 @@ jobs:
           path: .
       - name: Build image
         env:
-          GIT_COMMIT: "GA-${ GITHUB_SHA }"
+          GIT_COMMIT: "${{ github.sha }}"
         run: |
           chmod +x ci/build-docker.sh
           ci/build-docker.sh
       - name: Push Image
         env:
-          GIT_COMMIT: "GA-${ GITHUB_SHA }"
+          GIT_COMMIT: "${{ github.sha }}"
         run: |
           chmod +x ci/push-docker.sh
           ci/push-docker.sh
