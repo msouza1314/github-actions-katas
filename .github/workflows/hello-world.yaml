@@ -53,14 +53,14 @@ jobs:
       needs: [Test, Build]
       steps:
         - name: Download Repo
-        uses: actions/download-artifact@v2
-        with:
-          name: code
-          path: .
+          uses: actions/download-artifact@v2
+          with:
+            name: code
+            path: .
         - name: Build image
-        run: |
-          chmod +x ci/build-docker.sh
-          ci/build-docker.sh
+          run: |
+            chmod +x ci/build-docker.sh
+            ci/build-docker.sh
         - name: Push Image
           env:
             GIT_COMMIT: "GA-${GITHUB_SHA}"
